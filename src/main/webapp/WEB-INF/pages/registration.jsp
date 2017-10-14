@@ -7,13 +7,21 @@
 <html>
 	<head>
 		<title>Registration page</title>
+		<script src="js/script1.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<form method="post" action="adduser.html">
 			<table width=100%>
 				<tr>
 					<td width=10%>username:</td>
-					<td><input type="text" id="username" name="username" size="20" maxlength="30" required></td>
+					<td><input type="text" id="username" name="username" size="20" maxlength="30" required onblur="checkUsername()">
+					<span id="errorusername" style="color:red"></span></td>
+				</tr>
+				<tr>
+					<td width=10%>email:</td>
+					<td><input type="email" id="email" name="email" size="20" maxlength="30" required onblur="checkEmail()">
+					<span id="erroremail" style="color:red"></span></td>
 				</tr>
 				<tr>
 					<td width=10%>password:</td>

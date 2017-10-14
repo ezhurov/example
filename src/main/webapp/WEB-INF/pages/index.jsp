@@ -7,6 +7,8 @@
 <html>
 	<head>
 		<title>Index page</title>
+		<script src="js/script1.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<p><a href="registration.html">Registration</a></p>
