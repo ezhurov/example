@@ -18,3 +18,9 @@ function checkEmail() {
 		}
 	});
 }
+
+function clickCtrlEnter() {
+	if ((event.keyCode == 10 || event.keyCode == 13) && event.ctrlKey) {
+		$('form').submit();
+	}
+}

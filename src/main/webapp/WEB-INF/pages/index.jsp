@@ -6,10 +6,11 @@
 <html>
 	<head>
 		<title><st:message code="index" /></title>
-		<script src="js/script1.js"></script>
+		<c:url value="js/script1.js" var="script1"></c:url>
+		<script src="${script1}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
-	<body>
+	<body onkeypress="clickCtrlEnter()">
 		<table width=100%>
 			<tr>
 				<td align="left"><a href="registration.html"><st:message code="registration" /> |</a>

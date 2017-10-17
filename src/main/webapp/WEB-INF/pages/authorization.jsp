@@ -6,10 +6,11 @@
 <html>
 	<head>
 		<title><st:message code="authorization" /></title>
-		<script src="js/script1.js"></script>
+		<c:url value="js/script1.js" var="script1"></c:url>
+		<script src="${script1}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
-	<body>
+	<body onkeypress="clickCtrlEnter()">
 		<form method="post" action="<c:url value='/j_spring_security_check' />">
 			<table width=100%>
 				<tr>
