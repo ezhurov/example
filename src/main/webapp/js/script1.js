@@ -17,5 +17,4 @@ function checkEmail() {
 			$('#erroremail').text(data);
 		}
 	});
-	
 }

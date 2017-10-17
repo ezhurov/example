@@ -1,5 +1,7 @@
 package com.example.controllers;
 
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,17 +36,17 @@ public class Registration {
 	
 	@RequestMapping("/checkusername.html")
 	@ResponseBody
-	public String checkusername(@RequestParam("username") String username, Model model) {
+	public String checkusername(@RequestParam("username") String username, Locale locale) {
 		
-		return usersService.checkusername(username);
+		return usersService.checkusername(username, locale);
 		
 	}
 	
 	@RequestMapping("/checkemail.html")
 	@ResponseBody
-	public String checkemail(@RequestParam("email") String email) {
+	public String checkemail(@RequestParam("email") String email, Locale locale) {
 	
-		return usersService.checkemail(email);
+		return usersService.checkemail(email, locale);
 		
 	}
 	

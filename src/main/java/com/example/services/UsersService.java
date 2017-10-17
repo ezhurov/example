@@ -1,6 +1,7 @@
 package com.example.services;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,37 +14,29 @@ public class UsersService {
 	
 	@Autowired
 	private UsersDao usersDao;
-
+	
 	public void addUser(String username, String password, String email) {
 		
 		usersDao.addUser(username, password, email);
 		
 	}
 	
-	public String checkusername(String username) {
-		
-		if (username.isEmpty()) {
-			return "Fill this field";
-		}
+	public String checkusername(String username, Locale locale) {
 		
 		List<Users> users = usersDao.checkusername(username);
 		if (! users.isEmpty()) {
-			return "This username is busy";
+			return (locale.getLanguage().equals("en") ? "This username is busy" : "Этот логин уже занят");
 		} else {
 			return "";
 		}
 		
 	}
 	
-	public String checkemail(String email) {
-		
-		if (email.isEmpty()) {
-			return "Fill this field";
-		}
+	public String checkemail(String email, Locale locale) {
 		
 		List<Users> users = usersDao.checkemail(email);
 		if (! users.isEmpty()) {
-			return "This email is busy";
+			return (locale.getLanguage().equals("en") ? "This e-mail is busy" : "Этот e-mail уже занят");
 		} else {
 			return "";
 		}

@@ -5,26 +5,24 @@
 
 <html>
 	<head>
-		<title><st:message code="registration" /></title>
+		<title><st:message code="authorization" /></title>
 		<script src="js/script1.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<form method="post" action="adduser.html">
+		<form method="post" action="<c:url value='/j_spring_security_check' />">
 			<table width=100%>
 				<tr>
 					<td width=10%><st:message code="username" /></td>
-					<td><input type="text" id="username" name="username" size="20" maxlength="30" required onblur="checkUsername()">
-					<span id="errorusername" style="color:red"></span></td>
-				</tr>
-				<tr>
-					<td width=10%><st:message code="email" /></td>
-					<td><input type="email" id="email" name="email" size="20" maxlength="30" required onblur="checkEmail()">
-					<span id="erroremail" style="color:red"></span></td>
+					<td><input type="text" id="username" name="username" size="20" maxlength="30" required>
+					<span style="color:red; display:${errorvisibility}"><st:message code="errorauthorization" /></span>
 				</tr>
 				<tr>
 					<td width=10%><st:message code="password" /></td>
 					<td><input type="password" id="password" name="password" size="20" maxlength="30" required></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="remember-me" name="remember-me"><label for="remember-me"><st:message code="rememberme" /></label></td>
 				</tr>
 				<tr>	
 					<td><input type="submit" id="ok" name="ok" value="OK" style="height: 30px; width: 120px"></td>
