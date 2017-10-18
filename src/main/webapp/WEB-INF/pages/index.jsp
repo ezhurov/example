@@ -10,7 +10,7 @@
 		<script src="${script1}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
-	<body onkeypress="clickCtrlEnter()">
+	<body>
 		<table width=100%>
 			<tr>
 				<td align="left"><a href="registration.html"><st:message code="registration" /> |</a>

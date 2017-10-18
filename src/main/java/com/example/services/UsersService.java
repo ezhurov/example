@@ -43,4 +43,10 @@ public class UsersService {
 		
 	}
 	
+	public List<Users> getUserByEmail(String email) {
+		
+		return usersDao.checkemail(email);
+		
+	}
+	
 }

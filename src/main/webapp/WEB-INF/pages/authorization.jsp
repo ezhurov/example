@@ -24,6 +24,7 @@
 				</tr>
 				<tr>
 					<td><input type="checkbox" id="remember-me" name="remember-me"><label for="remember-me"><st:message code="rememberme" /></label></td>
+					<td><a href="forgotpassword.html"> | <st:message code = "forgotpassword" /></td>
 				</tr>
 				<tr>	
 					<td><input type="submit" id="ok" name="ok" value="OK" style="height: 30px; width: 120px"></td>
