@@ -15,7 +15,9 @@
 			<tr>
 				<td align="left"><a href="registration.html"><st:message code="registration" /> |</a>
 					<a href="authorization.html" style="display:${authorizationvisibility}"><st:message code="authorization" /> |</a>
-					<a href="<c:url value="/j_spring_security_logout" />" style="display:${indexvisibility}"><st:message code="logout" /> |</a></td>
+					<a href="changepassword.html" style="display:${changepasswordvisibility}"><st:message code="changepassword" /> |</a>
+					<a href="deleteaccount.html" style="display:${deletevisibility}"><st:message code="deleteaccount" /> |</a>
+					<a href="<c:url value="/j_spring_security_logout" />" style="display:${logoutvisibility}"><st:message code="logout" /> |</a></td>
 				<td align="right"><a href="?lang=en">en</a> | <a href="?lang=ru">ru</a></td>	
 			</tr>
 		</table>	

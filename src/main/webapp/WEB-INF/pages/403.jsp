@@ -8,7 +8,7 @@
 		<title>403</title>
 	</head>
 	<body>
-		<p><h1><center>403</center></h1></p>
+		<p><center><span style="font-size: 500%">403</span></center></p>
 		<p><h4><center><st:message code="403" /></center></h4></p>
 	</body>
 </html>

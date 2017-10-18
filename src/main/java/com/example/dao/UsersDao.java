@@ -33,7 +33,7 @@ public class UsersDao {
 	
 	@Transactional
 	@SuppressWarnings("all")
-	public List<Users> checkusername(String username) {
+	public List<Users> getUserByUsername(String username) {
 		
 		Session session = sessionFactory.getCurrentSession();
 		Query<Users> query = session.createQuery("FROM Users WHERE username = :username");
@@ -44,12 +44,35 @@ public class UsersDao {
 	
 	@Transactional
 	@SuppressWarnings("all")
-	public List<Users> checkemail(String email) {
+	public List<Users> getUserByEmail(String email) {
 		
 		Session session = sessionFactory.getCurrentSession();
 		Query<Users> query = session.createQuery("FROM Users WHERE email = :email");
 		query.setParameter("email", email);
 		return query.getResultList();
+		
+	}
+	
+	@Transactional
+	@SuppressWarnings("all")
+	public void deleteUserByUsername(String username) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		NativeQuery query = session.createNativeQuery("DELETE FROM Users WHERE username = :username");
+		query.setParameter("username", username);
+		query.executeUpdate();
+		
+	}
+	
+	@Transactional
+	@SuppressWarnings("all")
+	public void changePasswordByUsername(String username, String password) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		NativeQuery query = session.createNativeQuery("UPDATE users SET password = :password WHERE username = :username");
+		query.setParameter("username", username);
+		query.setParameter("password", password);
+		query.executeUpdate();
 		
 	}
 	

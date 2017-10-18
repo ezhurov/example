@@ -23,7 +23,7 @@ public class UsersService {
 	
 	public String checkusername(String username, Locale locale) {
 		
-		List<Users> users = usersDao.checkusername(username);
+		List<Users> users = usersDao.getUserByUsername(username);
 		if (! users.isEmpty()) {
 			return (locale.getLanguage().equals("en") ? "This username is busy" : "Этот логин уже занят");
 		} else {
@@ -34,7 +34,7 @@ public class UsersService {
 	
 	public String checkemail(String email, Locale locale) {
 		
-		List<Users> users = usersDao.checkemail(email);
+		List<Users> users = usersDao.getUserByEmail(email);
 		if (! users.isEmpty()) {
 			return (locale.getLanguage().equals("en") ? "This e-mail is busy" : "Этот e-mail уже занят");
 		} else {
@@ -43,9 +43,35 @@ public class UsersService {
 		
 	}
 	
+	public String checkoldpassword(String username, String oldpassword, Locale locale) {
+		
+		Users currentUser = usersDao.getUserByUsername(username).get(0);
+		if (currentUser.getPassword().equals(oldpassword)) {
+			return "";
+		} else {
+			return (locale.getLanguage().equals("en") ? "Uncorrectly password" : "Неправильно введен пароль");
+		}
+		
+	}
+	
 	public List<Users> getUserByEmail(String email) {
 		
-		return usersDao.checkemail(email);
+		return usersDao.getUserByEmail(email);
+		
+	}
+	
+	public void deleteaccount(String username) {
+		
+		usersDao.deleteUserByUsername(username);
+		
+	}
+	
+	public void changePasswordByUsername(String username, String oldpassword, String newpassword) {
+		
+		Users currentUser = usersDao.getUserByUsername(username).get(0);
+		if (currentUser.getPassword().equals(oldpassword)) {
+			usersDao.changePasswordByUsername(username, newpassword);
+		}
 		
 	}
 	
