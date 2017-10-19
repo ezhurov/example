@@ -9,6 +9,8 @@
 		<c:url value="js/script1.js" var="script1"></c:url>
 		<script src="${script1}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	</head>
 	<body>
 		<table width=100%>
@@ -16,7 +18,7 @@
 				<td align="left"><a href="registration.html"><st:message code="registration" /> |</a>
 					<a href="authorization.html" style="display:${authorizationvisibility}"><st:message code="authorization" /> |</a>
 					<a href="changepassword.html" style="display:${changepasswordvisibility}"><st:message code="changepassword" /> |</a>
-					<a href="deleteaccount.html" style="display:${deletevisibility}"><st:message code="deleteaccount" /> |</a>
+					<a href="deleteaccount.html" style="display:${deletevisibility}" onclick="confirmDeleting()"><st:message code="deleteaccount" /> |</a>
 					<a href="<c:url value="/j_spring_security_logout" />" style="display:${logoutvisibility}"><st:message code="logout" /> |</a></td>
 				<td align="right"><a href="?lang=en">en</a> | <a href="?lang=ru">ru</a></td>	
 			</tr>

@@ -5,15 +5,6 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
 	
-	<context-param>
-		<param-name>email</param-name>
-		<param-value></param-value>
-	</context-param>
-	<context-param>
-		<param-name>password</param-name>
-		<param-value></param-value>
-	</context-param>
-	
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>

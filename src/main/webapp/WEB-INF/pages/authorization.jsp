@@ -9,6 +9,8 @@
 		<c:url value="js/script1.js" var="script1"></c:url>
 		<script src="${script1}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	</head>
 	<body onkeypress="clickCtrlEnter()">
 		<form method="post" action="<c:url value='/j_spring_security_check' />">

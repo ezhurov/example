@@ -1,9 +1,6 @@
 package com.example.controllers;
 
-import java.util.Locale;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +14,6 @@ public class ForgotPassword {
 	@Autowired
 	private EmailService emailService;
 	
-	@Value("#{contextParameters.email}")
-	private String email;
-	
-	@Value("#{contextParameters.password}")
-	private String password;
-
 	@RequestMapping("/forgotpassword.html")
 	public String forgotpassword(Model model) {
 		
@@ -31,9 +22,9 @@ public class ForgotPassword {
 	}
 	
 	@RequestMapping("/sendemail.html")
-	public String sendEmail(@RequestParam("email") String to, Model model, Locale locale) {
+	public String sendEmail(@RequestParam("email") String to) {
 		
-		emailService.forgotPassword(to, email, password);
+		emailService.forgotPassword(to);
 		
 		return "redirect:/authorization.html";
 		
