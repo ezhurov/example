@@ -11,7 +11,7 @@ public class Authorization {
 	@RequestMapping("/authorization.html")
 	public String authorization(@RequestParam(name="error", required=false) String error, Model model) {
 		
-		model.addAttribute("errorvisibility", error != null && error.equals("true") ? "inline" : "none");
+		model.addAttribute("error_username_visibility", error != null && error.equals("true") ? "inline" : "none");
 		
 		return "WEB-INF/pages/authorization.jsp";
 		

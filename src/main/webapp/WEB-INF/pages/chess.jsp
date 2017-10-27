@@ -5,7 +5,7 @@
 
 <html>
 	<head>
-		<title><st:message code = "forgotpassword" /></title>
+		<title></title>
 		
 		<c:url value="js/script.js" var="script"></c:url>
 		<script src="${script}"></script>
@@ -13,17 +13,7 @@
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	</head>
-	<body onkeydown="clickCtrlEnter()">
-		<form method="post" action="send_email.html">
-			<table width=100%>
-				<tr>
-					<td width=10%><st:message code = "email" /></td>
-					<td><input type="email" name="email" id="email" size="20" maxlength="255" required></td>
-				</tr>
-				<tr>
-					<td><input type="submit" name="ok" id="ok" value="OK" style="height: 30px; width: 120px"></td>
-				</tr>
-			</table>
-		</form>
+	<body>
+		
 	</body>
 </html>

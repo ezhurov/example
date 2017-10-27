@@ -6,14 +6,15 @@
 <html>
 	<head>
 		<title><st:message code="registration" /></title>
-		<c:url value="js/script1.js" var="script1"></c:url>
-		<script src="${script1}"></script>
+		
+		<c:url value="js/script.js" var="script"></c:url>
+		<script src="${script}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	</head>
 	<body onkeypress="clickCtrlEnter()">
-		<form method="post" action="adduser.html">
+		<form method="post" action="add_user.html">
 			<table width=100%>
 				<tr>
 					<td width=10%><st:message code="username" /></td>

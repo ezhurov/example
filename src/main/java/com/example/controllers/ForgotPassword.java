@@ -14,14 +14,14 @@ public class ForgotPassword {
 	@Autowired
 	private EmailService emailService;
 	
-	@RequestMapping("/forgotpassword.html")
-	public String forgotpassword(Model model) {
+	@RequestMapping("/forgot_password.html")
+	public String forgotPassword(Model model) {
 		
 		return "WEB-INF/pages/forgotpassword.jsp";
 		
 	}
 	
-	@RequestMapping("/sendemail.html")
+	@RequestMapping("/send_email.html")
 	public String sendEmail(@RequestParam("email") String to) {
 		
 		emailService.forgotPassword(to);

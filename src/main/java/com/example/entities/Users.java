@@ -80,7 +80,7 @@ public class Users {
 		this.role = role;
 	}
 
-	public boolean isEnabled() {
+	public boolean getEnabled() {
 		return enabled;
 	}
 

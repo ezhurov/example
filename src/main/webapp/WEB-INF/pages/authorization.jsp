@@ -6,8 +6,9 @@
 <html>
 	<head>
 		<title><st:message code="authorization" /></title>
-		<c:url value="js/script1.js" var="script1"></c:url>
-		<script src="${script1}"></script>
+		
+		<c:url value="js/script.js" var="script"></c:url>
+		<script src="${script}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -18,7 +19,7 @@
 				<tr>
 					<td width=10%><st:message code="username" /></td>
 					<td><input type="text" id="username" name="username" size="20" maxlength="30" required>
-					<span style="color:red; display:${errorvisibility}"><st:message code="errorauthorization" /></span>
+					<span style="color:red; display:${error_username_visibility}"><st:message code="errorauthorization" /></span>
 				</tr>
 				<tr>
 					<td width=10%><st:message code="password" /></td>
@@ -26,7 +27,7 @@
 				</tr>
 				<tr>
 					<td><input type="checkbox" id="remember-me" name="remember-me"><label for="remember-me"><st:message code="rememberme" /></label></td>
-					<td><a href="forgotpassword.html"> | <st:message code = "forgotpassword" /></td>
+					<td><a href="forgot_password.html"> | <st:message code = "forgotpassword" /></td>
 				</tr>
 				<tr>	
 					<td><input type="submit" id="ok" name="ok" value="OK" style="height: 30px; width: 120px"></td>

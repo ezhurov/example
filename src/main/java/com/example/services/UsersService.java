@@ -1,5 +1,6 @@
 package com.example.services;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -21,7 +22,7 @@ public class UsersService {
 		
 	}
 	
-	public String checkusername(String username, Locale locale) {
+	public String checkUsername(String username, Locale locale) {
 		
 		List<Users> users = usersDao.getUserByUsername(username);
 		if (! users.isEmpty()) {
@@ -32,7 +33,7 @@ public class UsersService {
 		
 	}
 	
-	public String checkemail(String email, Locale locale) {
+	public String checkEmail(String email, Locale locale) {
 		
 		List<Users> users = usersDao.getUserByEmail(email);
 		if (! users.isEmpty()) {
@@ -43,7 +44,7 @@ public class UsersService {
 		
 	}
 	
-	public String checkoldpassword(String username, String oldpassword, Locale locale) {
+	public String checkOldPassword(String username, String oldpassword, Locale locale) {
 		
 		Users currentUser = usersDao.getUserByUsername(username).get(0);
 		if (currentUser.getPassword().equals(oldpassword)) {
@@ -60,7 +61,7 @@ public class UsersService {
 		
 	}
 	
-	public void deleteaccount(String username) {
+	public void deleteAccountByUsername(String username) {
 		
 		usersDao.deleteUserByUsername(username);
 		
@@ -72,6 +73,93 @@ public class UsersService {
 		if (currentUser.getPassword().equals(oldpassword)) {
 			usersDao.changePasswordByUsername(username, newpassword);
 		}
+		
+	}
+	
+	public List<Users> getAllUsers() {
+		
+		return usersDao.getAllUsers();
+		
+	}
+	
+	public List<Users> getLockedUsers() {
+		
+		return usersDao.getLockedUsers();
+		
+	}
+	
+	public List<Users> getUnlockedUsers() {
+		
+		return usersDao.getUnlockedUsers();
+		
+	}
+	
+	public void lockAccountByUsername(String username) {
+		
+		usersDao.lockAccountByUsername(username);
+		
+	}
+	
+	public void unlockAccountByUsername(String username) {
+		
+		usersDao.unlockAccountByUsername(username);
+		
+	}
+	
+	public void setRoleAsAdminByUsername(String username) {
+		
+		usersDao.setRoleAsAdminByUsername(username);
+		
+	}
+	
+	public void setRoleAsUserByUsername(String username) {
+		
+		usersDao.setRoleAsUserByUsername(username);
+		
+	}
+
+	public List<String> getAllUsersByHalfUsername(String username) {
+		
+		List<String> listUsername = new LinkedList<String>();
+		List<Users> users = usersDao.getAllUsersByHalfUsername(username);
+		
+		for (Users user : users) {
+			listUsername.add(user.getUsername());
+		}
+		
+		return listUsername;
+		
+	}
+	
+	public List<String> getLockedUsersByHalfUsername(String username) {
+		
+		List<String> listUsername = new LinkedList<String>();
+		List<Users> users = usersDao.getLockedUsersByHalfUsername(username);
+		
+		for (Users user : users) {
+			listUsername.add(user.getUsername());
+		}
+		
+		return listUsername;
+		
+	}
+	
+	public List<String> getUnlockedUsersByHalfUsername(String username) {
+		
+		List<String> listUsername = new LinkedList<String>();
+		List<Users> users = usersDao.getUnlockedUsersByHalfUsername(username);
+		
+		for (Users user : users) {
+			listUsername.add(user.getUsername());
+		}
+		
+		return listUsername;
+		
+	}
+	
+	public Users getMapOfUserByUsername(String username) {
+		
+		return usersDao.getUserByUsername(username).get(0);
 		
 	}
 	

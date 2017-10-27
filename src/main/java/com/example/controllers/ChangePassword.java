@@ -17,14 +17,14 @@ public class ChangePassword {
 	@Autowired
 	private UsersService usersService;
 
-	@RequestMapping("/changepassword.html")
+	@RequestMapping("/change_password.html")
 	public String changePassword() {
 		
 		return "WEB-INF/pages/changepassword.jsp";
 		
 	}
 	
-	@RequestMapping("/changingpassword.html")
+	@RequestMapping("/changing_password.html")
 	public String changingPassword(@RequestParam("oldpassword") String oldpassword, @RequestParam("newpassword") String newpassword) {
 		
 		usersService.changePasswordByUsername(SecurityContextHolder.getContext().getAuthentication().getName(), oldpassword, newpassword);
@@ -33,11 +33,11 @@ public class ChangePassword {
 		
 	}
 	
-	@RequestMapping("/checkoldpassword.html")
+	@RequestMapping("/check_old_password.html")
 	@ResponseBody
-	public String checkoldpassword(@RequestParam("oldpassword") String oldpassword, Locale locale) {
+	public String checkOldPassword(@RequestParam("oldpassword") String oldpassword, Locale locale) {
 		
-		return usersService.checkoldpassword(SecurityContextHolder.getContext().getAuthentication().getName(), oldpassword, locale);
+		return usersService.checkOldPassword(SecurityContextHolder.getContext().getAuthentication().getName(), oldpassword, locale);
 		
 	}
 	

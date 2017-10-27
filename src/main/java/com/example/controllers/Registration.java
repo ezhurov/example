@@ -24,8 +24,8 @@ public class Registration {
 		
 	}
 	
-	@RequestMapping("/adduser.html")
-	public String adduser(@RequestParam("username") String username, @RequestParam("password") String password, 
+	@RequestMapping("/add_user.html")
+	public String addUser(@RequestParam("username") String username, @RequestParam("password") String password, 
 			@RequestParam("email") String email, Model model) {
 		
 		usersService.addUser(username, password, email);
@@ -34,19 +34,19 @@ public class Registration {
 		
 	}
 	
-	@RequestMapping("/checkusername.html")
+	@RequestMapping("/check_username.html")
 	@ResponseBody
-	public String checkusername(@RequestParam("username") String username, Locale locale) {
+	public String checkUsername(@RequestParam("username") String username, Locale locale) {
 		
-		return usersService.checkusername(username, locale);
+		return usersService.checkUsername(username, locale);
 		
 	}
 	
-	@RequestMapping("/checkemail.html")
+	@RequestMapping("/check_email.html")
 	@ResponseBody
-	public String checkemail(@RequestParam("email") String email, Locale locale) {
+	public String checkEmail(@RequestParam("email") String email, Locale locale) {
 	
-		return usersService.checkemail(email, locale);
+		return usersService.checkEmail(email, locale);
 		
 	}
 	

@@ -30,12 +30,15 @@
 		<property name="locations" value="classpath:db/migration" />
 	</bean>
 	
-	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" depends-on="flyway">
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" depends-on="flyway">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="com.example" />
-		<property name="hibernateProperties">
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		<property name="jpaProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 				<prop key="hibernate.connection.pool_size">10</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.connection.CharSet">utf8</prop>
@@ -44,13 +47,12 @@
 			</props>
 		</property>
 	</bean>
-	
-	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
 
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
-	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<tx:annotation-driven />
+		
 	<security:http auto-config="true" use-expressions="true">
     	<security:form-login login-processing-url="/j_spring_security_check"
 								login-page="/authorization.html"
@@ -75,6 +77,8 @@
 						authorities-by-username-query="SELECT username, role FROM users WHERE username=?" />
 		</security:authentication-provider>
 	</security:authentication-manager>
+	
+	<security:global-method-security secured-annotations="enabled" />
 	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="local/messages" />
