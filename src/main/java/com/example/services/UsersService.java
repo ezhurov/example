@@ -76,21 +76,21 @@ public class UsersService {
 		
 	}
 	
-	public List<Users> getAllUsers() {
+	public List<Users> getAllUsersOrderByUsername() {
 		
-		return usersDao.getAllUsers();
-		
-	}
-	
-	public List<Users> getLockedUsers() {
-		
-		return usersDao.getLockedUsers();
+		return usersDao.getAllUsersOrderByUsername();
 		
 	}
 	
-	public List<Users> getUnlockedUsers() {
+	public List<Users> getLockedUsersOrderByUsername() {
 		
-		return usersDao.getUnlockedUsers();
+		return usersDao.getLockedUsersOrderByUsername();
+		
+	}
+	
+	public List<Users> getUnlockedUsersOrderByUsername() {
+		
+		return usersDao.getUnlockedUsersOrderByUsername();
 		
 	}
 	
@@ -157,7 +157,7 @@ public class UsersService {
 		
 	}
 	
-	public Users getMapOfUserByUsername(String username) {
+	public Users getUserByUsername(String username) {
 		
 		return usersDao.getUserByUsername(username).get(0);
 		

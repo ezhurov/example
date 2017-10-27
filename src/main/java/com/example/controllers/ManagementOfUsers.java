@@ -29,7 +29,7 @@ public class ManagementOfUsers {
 	@RequestMapping("/management_of_all_users.html")
 	public String managementOfAllUsers(Model model, Locale locale) {
 		
-		List<Users> allUsers = usersService.getAllUsers();
+		List<Users> allUsers = usersService.getAllUsersOrderByUsername();
 		
 		model.addAttribute("users", allUsers);
 		model.addAttribute("table_visibility", allUsers.isEmpty() ? "none" : "table");
@@ -44,7 +44,7 @@ public class ManagementOfUsers {
 	@RequestMapping("/management_of_locked_users.html")
 	public String managementOfLockedUsers(Model model, Locale locale) {
 		
-		List<Users> lockedUsers = usersService.getLockedUsers();
+		List<Users> lockedUsers = usersService.getLockedUsersOrderByUsername();
 		
 		model.addAttribute("users", lockedUsers);
 		model.addAttribute("table_visibility", lockedUsers.isEmpty() ? "none" : "table");
@@ -59,7 +59,7 @@ public class ManagementOfUsers {
 	@RequestMapping("/management_of_unlocked_users.html")
 	public String managementOfUnlockedUsers(Model model, Locale locale) {
 		
-		List<Users> unlockedUsers = usersService.getUnlockedUsers();
+		List<Users> unlockedUsers = usersService.getUnlockedUsersOrderByUsername();
 		
 		model.addAttribute("users", unlockedUsers);
 		model.addAttribute("table_visibility", unlockedUsers.isEmpty() ? "none" : "table");
@@ -155,7 +155,7 @@ public class ManagementOfUsers {
 	@ResponseBody
 	public String selectUserByHalfUsername(@RequestParam("username") String username) {
 		
-		Users user = usersService.getMapOfUserByUsername(username);
+		Users user = usersService.getUserByUsername(username);
 		
 		if (user != null) {
 			return new Gson().toJson(user);

@@ -16,6 +16,7 @@
 			var setAsAdminUser="<st:message code="setasadminuser" />";
 			var lockUnlockAccount="<st:message code="lockunlockaccount" />";
 			var deleteAccount="<st:message code="deleteaccount" />";
+			var areYouSure="<st:message code="areyousure" />";
 		</script>
 	</head>
 	<body>
@@ -35,9 +36,9 @@
 					<td width="15%">${user.email}</td>
 					<td width="10%">${user.role}</td>
 					<td width="5%">${user.enabled}</td>
-					<td width="10%"><a id="setasadminuser" href="set_as_admin_user.html?username=${user.username}&role=${user.role}"><st:message code="setasadminuser" /></a></td>
-					<td width="10%"><a id="lockunlockaccount" href="lock_account_by_username.html?username=${user.username}&enabled=${user.enabled}"><st:message code="lockunlockaccount" /></a></td>
-					<td width="10%"><a id="deleteaccount" href="delete_account_by_username.html?username=${user.username}"><st:message code="deleteaccount" /></a></td>
+					<td width="10%"><a onclick="confirmDialog()" id="setasadminuser_${user.id}" href="set_as_admin_user.html?username=${user.username}&role=${user.role}"><st:message code="setasadminuser" /></a></td>
+					<td width="10%"><a onclick="confirmDialog()" id="lockunlockaccount_${user.id}" href="lock_account_by_username.html?username=${user.username}&enabled=${user.enabled}"><st:message code="lockunlockaccount" /></a></td>
+					<td width="10%"><a onclick="confirmDialog()" id="deleteaccount_${user.id}" href="delete_account_by_username.html?username=${user.username}"><st:message code="deleteaccount" /></a></td>
 				</tr>
 			</c:forEach>
 		</table>	

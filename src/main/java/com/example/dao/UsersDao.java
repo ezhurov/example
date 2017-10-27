@@ -72,27 +72,27 @@ public class UsersDao {
 	
 	@Transactional
 	@SuppressWarnings("all")
-	public List<Users> getAllUsers() {
+	public List<Users> getAllUsersOrderByUsername() {
 		
-		Query query = session.createQuery("FROM Users");
+		Query query = session.createQuery("FROM Users ORDER BY username");
 		return query.getResultList();
 		
 	}
 	
 	@Transactional
 	@SuppressWarnings("all")
-	public List<Users> getLockedUsers() {
+	public List<Users> getLockedUsersOrderByUsername() {
 		
-		Query query = session.createQuery("FROM Users WHERE enabled = false");
+		Query query = session.createQuery("FROM Users WHERE enabled = false ORDER BY username");
 		return query.getResultList();
 		
 	}
 	
 	@Transactional
 	@SuppressWarnings("all")
-	public List<Users> getUnlockedUsers() {
+	public List<Users> getUnlockedUsersOrderByUsername() {
 		
-		Query query = session.createQuery("FROM Users WHERE enabled = true");
+		Query query = session.createQuery("FROM Users WHERE enabled = true ORDER BY username");
 		return query.getResultList();
 		
 	}
