@@ -6,11 +6,13 @@ import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.dao.UsersDao;
 import com.example.entities.Users;
 
 @Service
+@Transactional
 public class UsersService {
 	
 	@Autowired

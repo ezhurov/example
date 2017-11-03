@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.entities.Users;
 
@@ -17,7 +16,6 @@ public class UsersDao {
 	@PersistenceContext
 	private EntityManager session;
 
-	@Transactional
 	@SuppressWarnings("all")
 	public void addUser(String username, String password, String email) {
 
@@ -29,7 +27,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public List<Users> getUserByUsername(String username) {
 		
@@ -39,7 +36,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public List<Users> getUserByEmail(String email) {
 		
@@ -49,7 +45,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public void deleteUserByUsername(String username) {
 		
@@ -59,7 +54,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public void changePasswordByUsername(String username, String password) {
 		
@@ -70,7 +64,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public List<Users> getAllUsersOrderByUsername() {
 		
@@ -79,7 +72,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public List<Users> getLockedUsersOrderByUsername() {
 		
@@ -88,7 +80,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public List<Users> getUnlockedUsersOrderByUsername() {
 		
@@ -97,7 +88,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public void lockAccountByUsername(String username) {
 		
@@ -107,7 +97,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public void unlockAccountByUsername(String username) {
 		
@@ -117,7 +106,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public void setRoleAsAdminByUsername(String username) {
 		
@@ -127,7 +115,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public void setRoleAsUserByUsername(String username) {
 		
@@ -137,7 +124,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public List<Users> getAllUsersByHalfUsername(String username) {
 		
@@ -147,7 +133,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public List<Users> getLockedUsersByHalfUsername(String username) {
 		
@@ -157,7 +142,6 @@ public class UsersDao {
 		
 	}
 	
-	@Transactional
 	@SuppressWarnings("all")
 	public List<Users> getUnlockedUsersByHalfUsername(String username) {
 		

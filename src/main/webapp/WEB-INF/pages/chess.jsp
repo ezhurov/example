@@ -7,13 +7,24 @@
 	<head>
 		<title></title>
 		
-		<c:url value="js/script.js" var="script"></c:url>
+		<c:url value="static_context/js/script.js" var="script"></c:url>
+		<c:url value="static_context/css/chess.css" var="css"></c:url>
 		<script src="${script}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<link href="${scc}" rel="stylesheet">
 	</head>
 	<body>
-		
+		<table id="board" border="1">
+			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+		</table>	
 	</body>
 </html>
