@@ -1,14 +1,26 @@
 package com.example.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 @Entity
-@Table(name="Users")
+@Table(name="users")
+@Component
+@Scope("prototype")
 public class Users {
 
 	@Id
@@ -30,6 +42,16 @@ public class Users {
 	
 	@Column(name="enabled")
 	private boolean enabled;
+	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy="user", fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
+	private Statistic statistic;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="white_id", fetch = FetchType.LAZY)
+	private List<Games> white;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="black_id", fetch = FetchType.LAZY)
+	private List<Games> black;
 	
 	public Users() {
 		
@@ -82,5 +104,29 @@ public class Users {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-	
+
+	public Statistic getStatistic() {
+		return statistic;
+	}
+
+	public void setStatistic(Statistic statistic) {
+		this.statistic = statistic;
+	}
+
+	public List<Games> getWhite() {
+		return white;
+	}
+
+	public void setWhite(List<Games> white) {
+		this.white = white;
+	}
+
+	public List<Games> getBlack() {
+		return black;
+	}
+
+	public void setBlack(List<Games> black) {
+		this.black = black;
+	}
+
 }

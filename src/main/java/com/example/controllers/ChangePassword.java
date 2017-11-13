@@ -27,7 +27,9 @@ public class ChangePassword {
 	@RequestMapping("/changing_password.html")
 	public String changingPassword(@RequestParam("oldpassword") String oldpassword, @RequestParam("newpassword") String newpassword) {
 		
-		usersService.changePasswordByUsername(SecurityContextHolder.getContext().getAuthentication().getName(), oldpassword, newpassword);
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		usersService.changePasswordByUsername(username, oldpassword, newpassword);
 		
 		return "redirect:/authorization.html";
 		
@@ -37,7 +39,9 @@ public class ChangePassword {
 	@ResponseBody
 	public String checkOldPassword(@RequestParam("oldpassword") String oldpassword, Locale locale) {
 		
-		return usersService.checkOldPassword(SecurityContextHolder.getContext().getAuthentication().getName(), oldpassword, locale);
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		return usersService.checkOldPassword(username, oldpassword, locale);
 		
 	}
 	

@@ -7,8 +7,7 @@
 	<head>
 		<title><st:message code="authorization" /></title>
 		
-		<c:url value="static_context/js/script.js" var="script"></c:url>
-		<script src="${script}"></script>
+		<script src="<c:url value="static_context/js/script.js" />"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -27,7 +26,6 @@
 				</tr>
 				<tr>
 					<td><input type="checkbox" id="remember-me" name="remember-me"><label for="remember-me"><st:message code="rememberme" /></label></td>
-					<td><a href="forgot_password.html"> | <st:message code = "forgotpassword" /></td>
 				</tr>
 				<tr>	
 					<td><input type="submit" id="ok" name="ok" value="OK" style="height: 30px; width: 120px"></td>

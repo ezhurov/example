@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,9 +19,12 @@ public class UsersService {
 	@Autowired
 	private UsersDao usersDao;
 	
+	@Autowired
+	private BCryptPasswordEncoder bcryptEncoder;
+	
 	public void addUser(String username, String password, String email) {
 		
-		usersDao.addUser(username, password, email);
+		usersDao.addUser(username, bcryptEncoder.encode(password), email);
 		
 	}
 	

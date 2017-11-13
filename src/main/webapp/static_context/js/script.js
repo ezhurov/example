@@ -9,6 +9,11 @@ function clickCtrlEnter() {
 	}
 }
 
+function clickCreateGame() {
+	event.preventDefault();
+	$('#popup').fadeToggle();
+}
+
 function confirmDialog() {
 	event.preventDefault();
 	
@@ -23,6 +28,16 @@ function confirmDialog() {
 			"Cancel": function() {
                 $(this).dialog("close");
             }
+		}
+	});
+}
+
+function clickCreateGameButton() {
+	$.ajax({
+		url: 'create_game_button.html',
+		data: ({color : $('input[name=color]:checked').val()}),
+		success: function(data) {
+			window.location = "" + data;
 		}
 	});
 }
@@ -110,4 +125,24 @@ function liveSearchByHalfUsername() {
 			});
 		}
 	});
+}
+
+function autoUpdatePendingGames() {
+	setInterval(function() {
+		$.ajax({
+			url: 'auto_update_pending_games.html',
+	        contentType: "application/json",
+	        dataType: "json",
+			success: function(data) {
+				$('#games').empty();
+				for (var i = 0; i < data.length; i ++) {
+					$('#games').append('<tr>'
+							+ '<td>' + (data[i].white_id.username.trim() == "") ? data[i].black_id.username : data[i].white_id.username + '</td>'
+							+ '<td>' + (data[i].white_id.username.trim() == "") ? black : white + '</td>'
+							+ '<td><a id="play" href="">' + play + '"</a></td>'
+							+ '</tr>');
+				}	
+			}
+		});
+	}, 1000);
 }

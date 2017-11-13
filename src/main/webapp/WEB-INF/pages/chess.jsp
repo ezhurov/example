@@ -5,26 +5,41 @@
 
 <html>
 	<head>
-		<title></title>
+		<title><st:message code="chess" /></title>
 		
-		<c:url value="static_context/js/script.js" var="script"></c:url>
-		<c:url value="static_context/css/chess.css" var="css"></c:url>
-		<script src="${script}"></script>
+		<script src="<c:url value="static_context/js/script.js" />"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-		<link href="${scc}" rel="stylesheet">
 	</head>
 	<body>
-		<table id="board" border="1">
-			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-			<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-		</table>	
+		<table id="chess" width="100%">
+			<tr>
+				<td width="10%">
+					<p><st:message code="chat" /></p>
+					<textarea id="chat" cols="20" rows="20"></textarea>
+					<hr>
+					<textarea id="message" cols="20" rows="1"></textarea>
+					<p />
+					<input type="button" id="addMessageToChat" value="OK" style="height: 30px; width: 160px">
+				</td>
+				<td align="center" width="70%">
+					<table id="board" border="1">
+						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+					</table>
+				</td>
+				<td width="20%">
+					<p><a id="offerdraw"><st:message code="offerdraw" /></a></p>
+					<p><a id="throwtowel"><st:message code="throwtowel" /></a></p>
+				</td>
+			<tr>
+		</table>
 	</body>
 </html>

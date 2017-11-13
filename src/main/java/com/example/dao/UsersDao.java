@@ -11,15 +11,15 @@ import org.springframework.stereotype.Repository;
 import com.example.entities.Users;
 
 @Repository
+@SuppressWarnings("all")
 public class UsersDao {
 	
 	@PersistenceContext
-	private EntityManager session;
+	private EntityManager entityManager;
 
-	@SuppressWarnings("all")
 	public void addUser(String username, String password, String email) {
 
-		Query query = session.createNativeQuery("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
+		Query query = entityManager.createNativeQuery("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
 		query.setParameter("username", username);
 		query.setParameter("password", password);
 		query.setParameter("email", email);
@@ -27,125 +27,111 @@ public class UsersDao {
 		
 	}
 	
-	@SuppressWarnings("all")
 	public List<Users> getUserByUsername(String username) {
 		
-		Query query = session.createQuery("FROM Users WHERE username = :username");
+		Query query = entityManager.createQuery("FROM Users WHERE username = :username");
 		query.setParameter("username", username);
 		return query.getResultList();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public List<Users> getUserByEmail(String email) {
 		
-		Query query = session.createQuery("FROM Users WHERE email = :email");
+		Query query = entityManager.createQuery("FROM Users WHERE email = :email");
 		query.setParameter("email", email);
 		return query.getResultList();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public void deleteUserByUsername(String username) {
 		
-		Query query = session.createNativeQuery("DELETE FROM Users WHERE username = :username");
+		Query query = entityManager.createNativeQuery("DELETE FROM Users WHERE username = :username");
 		query.setParameter("username", username);
 		query.executeUpdate();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public void changePasswordByUsername(String username, String password) {
 		
-		Query query = session.createNativeQuery("UPDATE users SET password = :password WHERE username = :username");
+		Query query = entityManager.createNativeQuery("UPDATE users SET password = :password WHERE username = :username");
 		query.setParameter("username", username);
 		query.setParameter("password", password);
 		query.executeUpdate();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public List<Users> getAllUsersOrderByUsername() {
 		
-		Query query = session.createQuery("FROM Users ORDER BY username");
+		Query query = entityManager.createQuery("FROM Users ORDER BY username");
 		return query.getResultList();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public List<Users> getLockedUsersOrderByUsername() {
 		
-		Query query = session.createQuery("FROM Users WHERE enabled = false ORDER BY username");
+		Query query = entityManager.createQuery("FROM Users WHERE enabled = false ORDER BY username");
 		return query.getResultList();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public List<Users> getUnlockedUsersOrderByUsername() {
 		
-		Query query = session.createQuery("FROM Users WHERE enabled = true ORDER BY username");
+		Query query = entityManager.createQuery("FROM Users WHERE enabled = true ORDER BY username");
 		return query.getResultList();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public void lockAccountByUsername(String username) {
 		
-		Query query = session.createNativeQuery("UPDATE users SET enabled = false WHERE username = :username");
+		Query query = entityManager.createNativeQuery("UPDATE users SET enabled = false WHERE username = :username");
 		query.setParameter("username", username);
 		query.executeUpdate();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public void unlockAccountByUsername(String username) {
 		
-		Query query = session.createNativeQuery("UPDATE users SET enabled = true WHERE username = :username");
+		Query query = entityManager.createNativeQuery("UPDATE users SET enabled = true WHERE username = :username");
 		query.setParameter("username", username);
 		query.executeUpdate();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public void setRoleAsAdminByUsername(String username) {
 		
-		Query query = session.createNativeQuery("UPDATE users SET role = 'ROLE_ADMIN' WHERE username = :username");
+		Query query = entityManager.createNativeQuery("UPDATE users SET role = 'ROLE_ADMIN' WHERE username = :username");
 		query.setParameter("username", username);
 		query.executeUpdate();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public void setRoleAsUserByUsername(String username) {
 		
-		Query query = session.createNativeQuery("UPDATE users SET role = 'ROLE_USER' WHERE username = :username");
+		Query query = entityManager.createNativeQuery("UPDATE users SET role = 'ROLE_USER' WHERE username = :username");
 		query.setParameter("username", username);
 		query.executeUpdate();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public List<Users> getAllUsersByHalfUsername(String username) {
 		
-		Query query = session.createQuery("FROM Users WHERE username LIKE :username");
+		Query query = entityManager.createQuery("FROM Users WHERE username LIKE :username");
 		query.setParameter("username", username + "%");
 		return query.getResultList();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public List<Users> getLockedUsersByHalfUsername(String username) {
 		
-		Query query = session.createQuery("FROM Users WHERE (enabled = false AND username LIKE :username)");
+		Query query = entityManager.createQuery("FROM Users WHERE (enabled = false AND username LIKE :username)");
 		query.setParameter("username", username + "%");
 		return query.getResultList();
 		
 	}
 	
-	@SuppressWarnings("all")
 	public List<Users> getUnlockedUsersByHalfUsername(String username) {
 		
-		Query query = session.createQuery("FROM Users WHERE (enabled = true AND username LIKE :username)");
+		Query query = entityManager.createQuery("FROM Users WHERE (enabled = true AND username LIKE :username)");
 		query.setParameter("username", username + "%");
 		return query.getResultList();
 		
