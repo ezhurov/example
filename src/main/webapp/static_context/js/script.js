@@ -37,7 +37,7 @@ function clickCreateGameButton() {
 		url: 'create_game_button.html',
 		data: ({color : $('input[name=color]:checked').val()}),
 		success: function(data) {
-			window.location = "" + data;
+			window.location = data + ".html";
 		}
 	});
 }

@@ -21,7 +21,7 @@
 	<body onload="autoUpdatePendingGames()">
 		<table id="menu" width=100%>
 			<tr style="display: ${statistic_visibility}">
-				<td width="100%"> <st:message code="hello" />, ${username} 
+				<td width="100%"> <st:message code="hello" />, ${username}. 
 				<st:message code="wins" />: ${wins} | <st:message code="fails" />: ${fails} | <st:message code="draws" />: ${draws} </td>
 			</tr>
 			<tr>
@@ -53,7 +53,7 @@
 					    <td width="20%"></td>
 					    <td width="20%"><st:message code="white" /></td>
 					</c:if>
-					<td width="20%"><a id="play" href=""><st:message code="play" /></a></td>
+					<td width="20%"><a id="play" href="${pendingGame.id}.html"><st:message code="play" /></a></td>
 				</tr>
 			</c:forEach>
 		</table>	

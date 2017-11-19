@@ -17,12 +17,13 @@ public class UsersDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void addUser(String username, String password, String email) {
+	public void addUser(String username, String password, String email, String role) {
 
-		Query query = entityManager.createNativeQuery("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
+		Query query = entityManager.createNativeQuery("INSERT IGNORE INTO users (username, password, email, role) VALUES (:username, :password, :email, :role)");
 		query.setParameter("username", username);
 		query.setParameter("password", password);
 		query.setParameter("email", email);
+		query.setParameter("role", role);
 		query.executeUpdate();
 		
 	}

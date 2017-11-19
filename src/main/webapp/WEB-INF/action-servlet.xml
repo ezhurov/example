@@ -4,12 +4,14 @@
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:security="http://www.springframework.org/schema/security"
 	xmlns:jms="http://www.springframework.org/schema/jms" xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd"
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd"
 
 	default-lazy-init="true">
 
@@ -67,7 +69,7 @@
 		<security:remember-me remember-me-parameter="remember-me"
 								token-validity-seconds="86400" />
     	<security:access-denied-handler error-page="/403.html" />
-		<security:intercept-url pattern="/" requires-channel="https" /> 
+<!-- 		<security:intercept-url pattern="/" requires-channel="https" />  -->
     	<security:csrf disabled="true"/>
 	</security:http>
 	
@@ -98,5 +100,11 @@
 			<property name="paramName" value="lang" />
 		</bean>
 	</mvc:interceptors>
+	
+	<websocket:handlers> 
+		<websocket:mapping path="/echoHandler" handler="echoHandler"/> 
+	</websocket:handlers> 
+	
+	<bean id="echoHandler" class="com.example.config.EchoHandler"/>
 		
 </beans>

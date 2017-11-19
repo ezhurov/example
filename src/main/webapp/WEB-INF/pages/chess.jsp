@@ -8,36 +8,28 @@
 		<title><st:message code="chess" /></title>
 		
 		<script src="<c:url value="static_context/js/script.js" />"></script>
+		<script src="<c:url value="static_context/js/websocket.js" />"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script type="text/javascript">
+			var areYouSure="<st:message code="areyousure" />";
+		</script>
 	</head>
 	<body>
 		<table id="chess" width="100%">
 			<tr>
 				<td width="10%">
-					<p><st:message code="chat" /></p>
-					<textarea id="chat" cols="20" rows="20"></textarea>
+					<textarea id="chat" cols="20" rows="20" readonly></textarea>
 					<hr>
 					<textarea id="message" cols="20" rows="1"></textarea>
-					<p />
-					<input type="button" id="addMessageToChat" value="OK" style="height: 30px; width: 160px">
+					<p><input type="button" id="send" value="<st:message code="send" />" style="height: 30px; width: 160px"></p>
+					<p><input type="button" id="disconnect" value="<st:message code="disconnect" />" style="height: 30px; width: 160px"></p>
 				</td>
 				<td align="center" width="70%">
 					<table id="board" border="1">
-						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
-						<tr><td/><td/><td/><td/><td/><td/><td/><td/></tr>
+
 					</table>
-				</td>
-				<td width="20%">
-					<p><a id="offerdraw"><st:message code="offerdraw" /></a></p>
-					<p><a id="throwtowel"><st:message code="throwtowel" /></a></p>
 				</td>
 			<tr>
 		</table>
