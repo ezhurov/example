@@ -7,3 +7,6 @@ CREATE TABLE IF NOT EXISTS users(
 	role VARCHAR(255) DEFAULT 'ROLE_USER',
 	enabled BOOLEAN DEFAULT true
 );
+
+INSERT IGNORE INTO users (username, email, password, role) VALUES ('admin', 'admin@example.com', '$2a$10$5Wu4k6IFJqqURLpZGaFPluwAIsYMZ.vGE.KXbALAHhKoSbFmPny2K', 'ROLE_ADMIN');
+INSERT IGNORE INTO users (username, email, password, role) VALUES ('guest', 'guest@example.com', '$2a$10$tNJ0CIoE63tv2cJjqTh.OuBQWboxZ5.nwy8N3ucX8SJc2vIOxkwMq', 'ROLE_USER');

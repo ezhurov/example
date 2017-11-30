@@ -28,6 +28,5 @@ public class GamesDao {
 		return entityManager.createQuery("FROM Games WHERE (white_id IS NULL OR black_id IS NULL)").getResultList();
 		
 	}
-
 	
 }

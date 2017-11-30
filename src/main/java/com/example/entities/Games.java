@@ -25,13 +25,13 @@ public class Games {
 	@Column(name="id")
 	private int id;
 	
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	@JoinColumn(name="white_id")
-	private Users white_id;
+	private Users whiteId;
 	
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	@JoinColumn(name="black_id")
-	private Users black_id;
+	private Users blackId;
 
 	public Games() {
 		
@@ -45,20 +45,20 @@ public class Games {
 		this.id = id;
 	}
 
-	public Users getWhite_id() {
-		return white_id;
+	public Users getWhiteId() {
+		return whiteId;
 	}
 
-	public void setWhite_id(Users white_id) {
-		this.white_id = white_id;
+	public void setWhiteId(Users whiteId) {
+		this.whiteId = whiteId;
 	}
 
-	public Users getBlack_id() {
-		return black_id;
+	public Users getBlackId() {
+		return blackId;
 	}
 
-	public void setBlack_id(Users black_id) {
-		this.black_id = black_id;
+	public void setBlackId(Users blackId) {
+		this.blackId = blackId;
 	}
 
 }

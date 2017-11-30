@@ -47,10 +47,10 @@ public class Users {
 	@PrimaryKeyJoinColumn
 	private Statistic statistic;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="white_id", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="whiteId", fetch = FetchType.LAZY)
 	private List<Games> white;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="black_id", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="blackId", fetch = FetchType.LAZY)
 	private List<Games> black;
 	
 	public Users() {

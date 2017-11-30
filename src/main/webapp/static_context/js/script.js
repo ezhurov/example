@@ -9,7 +9,7 @@ function clickCtrlEnter() {
 	}
 }
 
-function clickCreateGame() {
+function clickPopUp() {
 	event.preventDefault();
 	$('#popup').fadeToggle();
 }

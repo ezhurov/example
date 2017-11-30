@@ -25,7 +25,7 @@
 					<td><input type="password" id="password" name="password" size="20" maxlength="30" required></td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" id="remember-me" name="remember-me"><label for="remember-me"><st:message code="rememberme" /></label></td>
+					<td width=10%><input type="checkbox" id="remember-me" name="remember-me"><label for="remember-me"><st:message code="rememberme" /></label></td>
 				</tr>
 				<tr>	
 					<td><input type="submit" id="ok" name="ok" value="OK" style="height: 30px; width: 120px"></td>

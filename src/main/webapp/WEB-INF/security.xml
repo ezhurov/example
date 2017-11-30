@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:jms="http://www.springframework.org/schema/jms" xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+
+	<security:http auto-config="true" use-expressions="true">
+    	<security:form-login login-processing-url="/j_spring_security_check"
+								login-page="/authorization.html"
+								authentication-failure-url="/authorization.html?error=true"
+								default-target-url="/index.html"
+								username-parameter="username"
+								password-parameter="password" />
+    	<security:logout logout-url="/j_spring_security_logout"
+							logout-success-url="/authorization.html"
+							invalidate-session="true" />
+		<security:remember-me remember-me-parameter="remember-me"
+								token-validity-seconds="86400" />
+    	<security:access-denied-handler error-page="/403.html" />
+<!-- 		<security:intercept-url pattern="/" requires-channel="https" />  -->
+    	<security:csrf disabled="true"/>
+	</security:http>
+	
+	<bean name="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:password-encoder ref="bcryptEncoder" />
+			<security:jdbc-user-service data-source-ref="dataSource"
+						users-by-username-query="SELECT username, password, enabled FROM users WHERE username=?"
+						authorities-by-username-query="SELECT username, role FROM users WHERE username=?" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<security:global-method-security secured-annotations="enabled" />
+	
+</beans>

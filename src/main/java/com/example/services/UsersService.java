@@ -22,13 +22,6 @@ public class UsersService {
 	@Autowired
 	private BCryptPasswordEncoder bcryptEncoder;
 	
-	public void addPredefinedUser() {
-		
-		usersDao.addUser("admin", bcryptEncoder.encode("admin"), "admin@example.com", "ROLE_ADMIN");
-		usersDao.addUser("guest", bcryptEncoder.encode("guest"), "guest@example.com", "ROLE_USER");
-		
-	}
-	
 	public void addUser(String username, String password, String email) {
 		
 		usersDao.addUser(username, bcryptEncoder.encode(password), email, "ROLE_USER");
@@ -84,7 +77,7 @@ public class UsersService {
 		
 		Users currentUser = usersDao.getUserByUsername(username).get(0);
 		if (currentUser.getPassword().equals(oldpassword)) {
-			usersDao.changePasswordByUsername(username, newpassword);
+			usersDao.changePasswordByUsername(username, bcryptEncoder.encode(newpassword));
 		}
 		
 	}

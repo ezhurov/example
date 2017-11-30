@@ -1,4 +1,3 @@
-
 var ping; 
 var websocket;
 

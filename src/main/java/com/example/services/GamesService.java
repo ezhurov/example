@@ -27,12 +27,19 @@ public class GamesService {
 		Games games = new Games();
 		
 		if (color.equals("white")) {
-			games.setWhite_id(usersDao.getUserByUsername(user.getUsername()).get(0));
-			gamesDao.addGame(games);
+			games.setWhiteId(usersDao.getUserByUsername(user.getUsername()).get(0));
 		} else if (color.equals("black")) {
-			games.setBlack_id(usersDao.getUserByUsername(user.getUsername()).get(0));
-			gamesDao.addGame(games);
+			games.setBlackId(usersDao.getUserByUsername(user.getUsername()).get(0));
+		} else if (color.equals("random")) {
+			int random = (int) (Math.random() * 2 + 1);
+			if (random == 1) {
+				games.setWhiteId(usersDao.getUserByUsername(user.getUsername()).get(0));
+			} else {
+				games.setBlackId(usersDao.getUserByUsername(user.getUsername()).get(0));
+			}	
 		}
+		
+		gamesDao.addGame(games);
 		
 		return games.getId();
 		

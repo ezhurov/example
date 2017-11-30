@@ -9,7 +9,10 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-		
+
+	<import resource="security.xml"/>		
 	<import resource="action-servlet.xml" />
+	<import resource="location.xml"/>
+	<import resource="dao.xml"/>
 		
 </beans>
